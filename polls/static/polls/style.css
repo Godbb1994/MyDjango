@@ -1,0 +1,79 @@
+body {
+  background: white url("images/background.jpg") no-repeat;
+  font-family: Arial, sans-serif;
+  color: #333;
+  display: grid;
+  grid-template-rows: 1fr auto; /* fr 表示剩余空间，auto 表示依据内容决定高度 */
+}
+
+
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+  margin: 0 0 1em 0;
+}
+
+p {
+  margin: 0 0 1em 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 1em 0 0;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 1em 0 0.5em 0;
+}
+
+.choice {
+  margin: 0 0 1em 0;
+}
+
+.choice::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-top: 1em;
+  border-top: 1px solid #ddd;
+
+  /* 添加以下樣式可以讓長線更美觀 */
+  border-color: #ccc;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.choice:last-of-type::after {
+  border-bottom: 1px solid #ccc;
+  border-width: 2px;
+  border-style: solid;
+}
+
+label {
+  display: block;
+  margin: 0;
+}
+
+input[type="radio"] {
+  margin-right: 0.5em;
+}
+
+input[type="submit"] {
+  margin: 1em 0 0 0;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  cursor: pointer;
+}
