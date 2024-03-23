@@ -1,5 +1,5 @@
+# models.py start
 import datetime
-
 from django.db import models
 from django.utils import timezone
 from django.contrib import admin
@@ -37,6 +37,4 @@ class Choice(models.Model):
         return self.choice_text
 
 
-from django.db import models
-
-# Create your models here
+# models.py end
