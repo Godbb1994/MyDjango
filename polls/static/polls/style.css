@@ -3,8 +3,7 @@ body {
   font-family: Arial, sans-serif;
   color: #333;
   display: grid;
-  grid-template-rows: 1fr auto; /* fr 表示剩余空间，auto 表示依据内容决定高度 */
-}
+  grid-template-rows: 1fr auto;
 
 h1 {
   text-align: center;
@@ -48,7 +47,6 @@ h2 {
   margin-top: 1em;
   border-top: 1px solid #ddd;
 
-  /* 添加以下樣式可以讓長線更美觀 */
   border-color: #ccc;
   border-width: 2px;
   border-style: solid;
@@ -101,4 +99,10 @@ input[type="submit"] {
   overflow-y: scroll;
   padding: 0; /* Remove any default padding */
   margin: 0; /* Remove any default margin */
+  }
+
+  /*修改長寬*/
+select {
+    width: 200px;
+    height: 30px;  /* Adjust height as needed */
 }
