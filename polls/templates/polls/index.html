@@ -12,18 +12,29 @@
 <blockquote><h1>&nbsp;&nbsp;&nbsp;調查確診人員居家隔離兩週後身體狀況</h1></blockquote>
 {% if latest_question_list %}
 {% for question in latest_question_list %}
-  {% if question.question_text != "問卷項目（可點問題直接跳轉到）" %}
-    <h2>{{ question.question_text }}</h2>
-    {% for choice in question.choice_set.all %}
-      <div class="choice">
-        <label for="{{ choice.id }}">
-          <input type="radio" id="{{ choice.id }}" name="choice-{{ question.id }}" value="{{ choice.id }}">
-          {{ choice.choice_text }}
-        </label>
-      </div>
-    {% endfor %}
+  <h2>{{ question.question_text }}</h2>
+  {% if question.type == 'single' or question.type == 'multiple' %}
+    {% if question.type == 'single' %}
+      <select name="choice-{{ question.id }}">
+        {% for choice in question.choice_set.all %}
+          <option value="{{ choice.id }}">{{ choice.choice_text }}</option>
+        {% endfor %}
+      </select>
+    {% elif question.type == 'multiple' %}
+      <ul>
+        {% for choice in question.choice_set.all %}
+          <li>
+            <input type="checkbox" id="{{ choice.id }}" name="choice-{{ question.id }}" value="{{ choice.id }}">
+            <label for="{{ choice.id }}">{{ choice.choice_text }}</label>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% else %}
+    <p>問題類型無效</p>
   {% endif %}
 {% endfor %}
+
 <div>
   <input type="submit" value="提交">
 </div>

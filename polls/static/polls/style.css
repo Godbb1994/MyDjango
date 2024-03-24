@@ -6,8 +6,6 @@ body {
   grid-template-rows: 1fr auto; /* fr 表示剩余空间，auto 表示依据内容决定高度 */
 }
 
-
-
 h1 {
   text-align: center;
   font-size: 2em;
@@ -76,4 +74,31 @@ input[type="submit"] {
   padding: 0.5em 1em;
   font-size: 1em;
   cursor: pointer;
+}
+
+/* 下拉式選單樣式 */
+
+.dropdown-menu {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.dropdown-menu option {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.dropdown-menu option:hover {
+  text-overflow: inherit;
+}
+
+/* 可選樣式：自定義特定下拉式選單樣式 */
+
+.my-dropdown {
+  max-height: 200px;
+  overflow-y: scroll;
+  padding: 0; /* Remove any default padding */
+  margin: 0; /* Remove any default margin */
 }
