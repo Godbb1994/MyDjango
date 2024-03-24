@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  {% load static %}    <link rel="stylesheet" href="{% static 'polls/style.css' %}">  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>近期COVID-19確診人員問卷調查</title>
-    <script>alert("如果您沒有確診過或是未達隔離天數請勿填寫表單")</script>   <style>
+    {#index.html start#}
+    <!DOCTYPE html>
+    <html lang="zh-Hant">
+    <head>
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>近期COVID-19確診人員問卷調查</title>
+      <script>alert("如果您沒有確診過或是未達隔離天數請勿填寫表單")</script>
+    </head>
+    <body>
+      <div class="container">
 
-    </style>
-</head>
-<body>
-<blockquote><h1>&nbsp;&nbsp;&nbsp;調查確診人員居家隔離兩週後身體狀況</h1></blockquote>
-{% if latest_question_list %}
+      {% block content %}
+      {% endblock %}
+        <blockquote><h1>調查確診人員居家隔離兩週後身體狀況</h1></blockquote>
+        {% if latest_question_list %}
 {% for question in latest_question_list %}
   <h2>{{ question.question_text }}</h2>
   {% if question.type == 'single' or question.type == 'multiple' %}
@@ -23,9 +28,14 @@
     {% elif question.type == 'multiple' %}
       <ul>
         {% for choice in question.choice_set.all %}
+          {% if not forloop.first %}
+            <br>
+          {% endif %}
           <li>
-            <input type="checkbox" id="{{ choice.id }}" name="choice-{{ question.id }}" value="{{ choice.id }}">
-            <label for="{{ choice.id }}">{{ choice.choice_text }}</label>
+            <label for="{{ choice.id }}">
+              <input type="checkbox" id="{{ choice.id }}" name="choice-{{ question.id }}" value="{{ choice.id }}">
+              {{ choice.choice_text }}
+            </label>
           </li>
         {% endfor %}
       </ul>
@@ -35,11 +45,15 @@
   {% endif %}
 {% endfor %}
 
-<div>
-  <input type="submit" value="提交">
-</div>
-{% else %}
-  <p>沒有任何問卷調查可供參與。</p>
-{% endif %}
-</body>
-</html>
+
+        <div>
+          <input type="submit" value="提交">
+        </div>
+        {% else %}
+          <p>沒有任何問卷調查可供參與。</p>
+        {% endif %}
+      </div>
+    </body>
+    </html>
+
+    {#index.html  end #}

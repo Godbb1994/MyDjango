@@ -1,14 +1,22 @@
+/*style.css start*/
 body {
-  background: white url("images/background.jpg") no-repeat;
+  background-image: url("images/01.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   font-family: Arial, sans-serif;
   color: #333;
   display: grid;
   grid-template-rows: 1fr auto;
+}
 
 h1 {
   text-align: center;
   font-size: 2em;
   margin: 0 0 1em 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 550px;
+  height: 100px;
 }
 
 p {
@@ -106,3 +114,24 @@ select {
     width: 200px;
     height: 30px;  /* Adjust height as needed */
 }
+.container {
+  margin: 0 auto;
+  width: 500px;
+  padding: 20px;
+}
+input[type="submit"] {
+  margin: 0 auto;
+}
+.question li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.question li input {
+  margin-right: 10px;
+}
+
+
+
+/*styl.css* end**/
