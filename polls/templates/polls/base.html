@@ -9,9 +9,12 @@
 </head>
 <body>
 
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+{% endblock %}
+
 {% block content %}
 
 {% endblock %}
-
 </body>
 </html>
