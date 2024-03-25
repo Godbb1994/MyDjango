@@ -1,10 +1,10 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views import generic
 from django.utils import timezone
-from .models import Choice, Question
+from .models import Choice, Question, MyModel
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.shortcuts import render
+from django.views.generic import CreateView
 
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
@@ -52,12 +52,11 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
-from django.shortcuts import render, redirect
+
+class SubmitView(CreateView):
+    model = MyModel
+    fields = ['name', 'email', 'message']
+    template_name = 'submit.html'
 
 def submit_data(request):
-    if request.method == 'POST':
-        # 在這裡處理提交的數據
-        # 您可以將數據保存到數據庫或進行其他操作
-        return redirect('/submit/')  # 跳轉到指定 URL
-    else:
-        return render(request, 'polls/submit.html')
+    return render(request, 'polls/submit.html')
