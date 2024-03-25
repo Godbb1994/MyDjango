@@ -1,4 +1,3 @@
-# admin.py start
 from django.contrib import admin
 from .models import Choice, Question
 
@@ -47,11 +46,5 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
 
 
-
-
-
-
-admin.site.register(Choice)
 admin.site.register(Question, QuestionAdmin)
-
-# admin.py end
+admin.site.register(Choice)

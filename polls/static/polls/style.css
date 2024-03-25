@@ -17,7 +17,7 @@
 }
 
 body {
-  background-image: url("images/02.jpeg"); /* 指定背景圖片 */
+  background-image: url("images/02.jpg"); /* 指定背景圖片 */
   background-color: #fff;
   font-family: serif;
   color: #333;
@@ -31,7 +31,7 @@ h1 {
   text-align: center;
   font-size: 2em;
   margin: 0 0 1em 0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
   width: 550px;
   height: 100px;
   margin-top: 20px;
@@ -126,30 +126,36 @@ select {
     width: 200px;
     height: 30px;  /* Adjust height as needed */
   }
-  .container {
-  background-color: #fff;
+.container {
+    background-color: rgba(255, 255, 255, 0.88);
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* 修改屬性，將容器內元素水平靠左對齊 */
+  align-items: flex-start; /* 將容器內元素水平靠左對齊 */
   justify-content: center;
   position: relative;
-  left: 20%;
+  left: 21%;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
   flex: 1;
   box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
-    margin: 0 auto;
-  max-width: 600px;
+  margin: 0 auto;
   padding: 20px;
 }
+
 .container h1 {
-  text-align: center; /* 將標題置中 */
-  border: none; /* 移除標題的框框 */
-  width: auto; /* 去除固定寬度 */
-  height: auto; /* 去除固定高度 */
-    margin: 0; /* 清除標題的預設邊距 */
-  padding: 0; /* 清除標題的預設內距 */
-  box-shadow: none; /* 移除陰影效果 */
+  text-align: center; /* 保持標題置中對齊 */
+  margin: 0 auto; /* 使用自動外邊距使標題水平置中 */
+  width: fit-content; /* 使用自適應寬度使標題僅包裹其內容 */
+  box-shadow: none;
+  border: none;
+  height: auto;
+  padding: 0;
+}
+.container h2 {
+  border: 1px dashed #afb4db;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 .container h1,
 .container h2,
@@ -177,7 +183,11 @@ select {
 .container input[type="submit"] {
   margin-top: 20px;
 }
-
+.container .question-container {
+  border: 1px dashed #ccc !important;
+  padding: 10px;
+  margin-bottom: 10px;
+}
 .question li {
   display: flex;
   align-items: center;

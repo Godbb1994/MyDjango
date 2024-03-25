@@ -4,6 +4,7 @@ from django.utils import timezone
 from .models import Choice, Question
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.shortcuts import render
 
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
@@ -14,7 +15,7 @@ class IndexView(generic.ListView):
         Return the last five published questions (not including those set to be
         published in the future) that are single or multiple choice.
         """
-        return Question.objects.filter(pub_date__lte=timezone.now(), type__in=('single', 'multiple')).order_by("-pub_date")[:5]
+        return Question.objects.filter(pub_date__lte=timezone.now(), type__in=('single', 'multiple')).order_by("-pub_date")[:30]
 
 class DetailView(generic.DetailView):
     model = Question
@@ -51,3 +52,12 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
+from django.shortcuts import render, redirect
+
+def submit_data(request):
+    if request.method == 'POST':
+        # 在這裡處理提交的數據
+        # 您可以將數據保存到數據庫或進行其他操作
+        return redirect('/submit/')  # 跳轉到指定 URL
+    else:
+        return render(request, 'polls/submit.html')

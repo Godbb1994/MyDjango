@@ -8,12 +8,14 @@
   <title>近期COVID-19確診人員問卷調查</title>
   <script>alert("如果您沒有確診過或是未達隔離天數請勿填寫表單")</script>
 </head>
+
 <body style="display: flex;">
   <div class="container">
+
     {% block content %}
     {% endblock %}
 
-    <h1>&nbsp;&nbsp;&nbsp;&nbsp;調查確診人員居家隔離兩週後身體狀況</h1>
+    <h1>調查確診人員居家隔離兩週後身體狀況</h1>
     {% if latest_question_list %}
       <form method="post" action="/submit">
         {% csrf_token %}
